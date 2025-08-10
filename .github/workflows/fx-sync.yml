@@ -1,0 +1,13 @@
+name: Daily FX Sync
+
+on:
+  schedule:
+    - cron: '0 6 * * *' # Runs daily at 6am UTC
+
+jobs:
+  ping-supabase-function:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Supabase Edge Function
+        run: |
+          curl -X POST https://crmwhhuoywuwqeplqrci.functions.supabase.co/super-task
